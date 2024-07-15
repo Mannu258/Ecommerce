@@ -5,16 +5,16 @@ from . models import *
 
 def index(request,cat=None):
     query = Product.objects.all()
-    catquery = Cateogery.objects.all()
-    return render(request,"index.html",{"query":query,"cat":catquery})
-    # return HttpResponse(f"{cat}")
+    catquery = Cateogery.objects.all()[:16]
+    return render(request,"index.html",{"query":query,"catquery":catquery})
 
 def cateogery(request,cat=None):
+    catquery = Cateogery.objects.all()[:16]
     if cat:
         query = Product.objects.filter(cat__cat__contains=cat)
     else:
         query = Product.objects.all()
-    return render(request,"index.html",{"query":query})
+    return render(request,"index.html",{"query":query,"catquery":catquery})
 
 def about(request):
     return render(request,"about.html")
