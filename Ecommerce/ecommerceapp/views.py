@@ -15,4 +15,24 @@ def cateogery(request,cat=None):
     else:
         query = Product.objects.all()
     return render(request,"index.html",{"query":query})
-    # return HttpResponse(f"{cat}")
+
+def about(request):
+    return render(request,"about.html")
+
+def cart(request):
+    return render(request,"cart.html")
+
+def contact(request):
+    return render(request,"contact.html")
+
+def detail(request):
+    return render(request,"detail.html")
+
+def login(request):
+    return render(request,"login.html")
+
+def product(request):
+    return render(request,"prodcut.html")
+def signup(request):
+    return render(request,"signup.html")
+
