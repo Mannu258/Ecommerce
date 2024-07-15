@@ -72,7 +72,7 @@
                 </h6>
                 <ul id="menu" class=" navcol fw-bold d-none d-md-inline-flex">
                     {% for catquery in catquery %}
-                    <li class="p-21 px-4"><a class="text-white" href="">{{catquery.cat}}</a></li>
+                    <li class="p-21 px-4"><a class="text-white" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a></li>
                     {%endfor%}
                                 
                 </ul>
