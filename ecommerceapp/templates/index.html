@@ -43,14 +43,13 @@
                 <div class="bg-white p-2 shadow-md">
                     <div class="text-center">
                         <a href="detail.html">
-                            <img src="{% static 'assets/images/product/p1.jpg' %}" alt="">
+                            <img style="width: 500px; height: 300px;" class="w-100 d-block" src="/media/{{query.image}}">
+
                         </a>
                     </div>
                     <div class="detail p-2">
-                        <h4 class="mb-1 fs-5 fw-bold">Personalised Birthday Easel</h4>
-                        <b class="fs-4 text-danger">$44.00</b>
-                        <s class="fs-5 ps-3">60.00</s>
-
+                        <h4 class="mb-1 fs-5 fw-bold">{{query.product_name}}l</h4>
+                        <b class="fs-4 text-danger">{{query.price}}</b>
                         <ul class="mt-0 vgth">
                             <li class="fs-8">
                                 <i class="bi text-warning bi-star-fill"></i>
