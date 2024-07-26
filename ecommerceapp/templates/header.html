@@ -1,81 +1,54 @@
-
-
-    {% load static %}
-    <header class="container-fluid bg-white">
-        <div class="header-top bg-gray  border-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <ul class="d-inline-flex pt-0 pt-md-2 fs-6">
-                            <li class="p-2 "><i class="bi bi-envelope"></i> Support@smarteyeapps.com</li>
-                            <li class="p-2 d-none d-md-block"><i class="bi bi-headphones"></i> +987 676 7676 676</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4 d-flex align-items-end">
-                        <ul class="ms-auto d-inline-flex">
-                            <li class="p-2"><a target="_blank" href="{% url 'login' %}"><button
-                                        class="btn px-4 btn-danger">Login</button></a></li>
-                            <li class="p-2"><a target="_blank" href=""><button class="btn px-4 btn-outline-danger">Sign
-                                        Up</button></a></li>
-                        </ul>
-                    </div>
-                </div>
+<!doctype html>
+{% load static %}
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #008080;">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img class="logo" src="{% static 'assets/images/logo.png' %}"
+                    alt="Your Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home <span class="visually-hidden">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Categories</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            {% for catquery in catquery %}
+                            <a class="dropdown-item text-dark" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a>
+                            {%endfor%}
+                    </li>
             </div>
+            </li>
+            </ul>
+            <form class="d-flex my-2 my-lg-0">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
         </div>
-        <div class="logo-contaienr p-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-9 pt-1 pb-2">
-                        <a href="{% url 'home' %}">
-                            <img class="logo" src="{% static 'assets/images/logo.jpg' %}" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-6 d-none d-md-block pt-2">
-                        <div class="input-group pt-1 mb-0">
-                            <input type="text" class="form-control border-end-0 mb-0" placeholder="Search Apps"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <span class="input-group-text sit border-start-0" id="basic-addon2"><i
-                                    class="bi bi-search"></i></span>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-3 pt-1 text-end">
-                        <a href="{% url 'cart' %}">
-                            <button type="button" class="btn btn-light shadow-md border position-relative">
-                                <i class="bi fs-4 bi-basket"></i>
-                                <span
-                                    class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    2
-
-                                </span>
-                            </button>
-                        </a>
-
-                        <button type="button"
-                            class="btn d-none d-md-inline-block ms-3 btn-light shadow-md border position-relative">
-                            <i class="bi fs-4 bi-heart"></i>
-                            <span
-                                class="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                                2
-
-                            </span>
-                        </button>
-
-                    </div>
-                </div>
-            </div>
         </div>
-        <div class="menu-bar bg-danger container-fluid border-top">
-            <div class="container">
-                <h6 class="d-md-none text-white p-3 mb-0 fw-bold">Menu
-                    <a class="text-white" data-bs-target="#menu" data-bs-toggle="collapse" aria-expanded="false"
-                        aria-controls="menu"><i class="bi cp bi-list float-end fs-1 dmji"></i></a>
-                </h6>
-                <ul id="menu" class=" navcol fw-bold d-none d-md-inline-flex">
-                    {% for catquery in catquery %}
-                    <li class="p-21 px-4"><a class="text-white" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a></li>
-                    {%endfor%}
-                                
-                </ul>
-            </div>
-        </div>
-    </header>
+    </nav>
+    <style>
+        .colors {
+            background-color: #2d81b3;
+        }
+        .text-white {
+            text-decoration: none;
+            /* Ensure horizontal text flow */
+        }
+    </style>
+    <div class="colors">
+        <ul id="menu" class="d-md-inline-flex">
+            {% for catquery in catquery %}
+            <li class="px-4"><a class="text-white" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a></li>
+            {%endfor%}
+
+        </ul>
+    </div>
+</header>
