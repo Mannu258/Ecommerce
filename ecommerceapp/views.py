@@ -18,6 +18,19 @@ def cateogery(request, cat=None):
         catquery = Cateogery.objects.all()
     return render(request, "index.html", {"query":query,"catquery": catquery,"subcatquery":subcatquery})
 
+def search(request, param):
+    search_value = param
+    if search_value:
+        query = Product.objects.filter(product_name__icontains=search_value)
+    else:
+        query = Product.objects.all()
+    catquery = Cateogery.objects.all()
+    subcatquery = subcateogery.objects.all()[:8]
+
+    return render(request, "index.html", {"query": query, "catquery": catquery, "subcatquery": subcatquery})
+        
+    
+
 def SUBcateogery(request, cat=None):
     query = Product.objects.filter(cat__scat__contains=cat)
     catquery = Cateogery.objects.all()

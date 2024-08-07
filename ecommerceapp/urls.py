@@ -10,6 +10,7 @@ urlpatterns = [
     path('cart',cart,name='cart'),
     path('contact',contact,name='contact'),
     path('login',login,name='login'),
+    path('search/<str:param>',search,name='search'),
     path('product',product,name='product'),
     path('signup',signup,name='signup'),
     path('detail',detail,name='detail'),
