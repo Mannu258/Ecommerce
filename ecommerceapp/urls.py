@@ -13,6 +13,7 @@ urlpatterns = [
     path('product',product,name='product'),
     path('signup',signup,name='signup'),
     path('detail',detail,name='detail'),
-    path("<str:cat>",cateogery,name='cat'),
+    path("Cateogery/<str:cat>",cateogery,name='cat'),
+    path("subcaterogery/<str:cat>",SUBcateogery,name='subcat'),
     re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
 ] +static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
