@@ -13,20 +13,10 @@
                     <a class="nav-link active btn btn-danger me-3" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active btn btn-danger me-3" href="#">Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
+                    <a class="nav-link active btn btn-danger me-3" href="#product">Product</a>
                 </li>
                 <li class="nav-item dropdown">
-                <li class="nav-item dropdown">
-                    <a class="nav-link active btn btn-danger dropdown-toggle" href="#" id="dropdownId"
+                    <a class="nav-link active btn btn-danger dropdown-toggle me-3" href="#" id="dropdownId"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
                         {% for catquery in catquery %}
@@ -35,11 +25,27 @@
                         {%endfor%}
 
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <input id="searchInput" name="value" class="form-control me-3" placeholder="Product Search"
+                        aria-label="Search">
+                    <style>
+                        #searchInput {
+                            width: 364px;
+                        }
+                    </style>
+
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-danger me-4" onclick="search()" href="#">Search Item</button>
+                </li>
                 </li>
             </ul>
             <div class="d-flex ms-auto">
-                <button class="form-control btn btn-danger me-3" type="submit">Search</button>
-                <button class="form-control btn btn-danger me-3" type="submit">Search</button>
+                <button class="form-control btn btn-danger me-3" type="submit">Cart</button>
+                <button class="form-control btn btn-danger me-3" type="submit">Login/Register</button>
                 <button class="form-control btn btn-danger me-3" type="submit">Search</button>
 
             </div>
@@ -51,21 +57,18 @@
 
 <ul class="navbar navbar-expand-lg navbar-dark bg-dark">
     {% for catquery in subcatquery %}
-    <li class="px-3 mt-2"><a class="btn btn-danger"
-            href="{% url 'subcat' catquery.scat %}#product">{{catquery.scat}}</a>
-    </li>
+    <li class="px-3"><a class="btn btn-danger"href="{% url 'subcat' catquery.scat %}#product">{{catquery.scat}}</a></li>
     {%endfor%}
-    <div class="d-flex ms-auto mt-2 text-center">
-        <input id="searchInput" name="value" class="form-control me-3" placeholder="Product Search" aria-label="Search">
-        <button onclick="search()" class="form-control btn btn-danger">Search</button>
-    </div>
     <script>
         function search() {
             const searchValue = document.getElementById('searchInput').value;
-            window.location.href = `/search/${encodeURIComponent(searchValue)}#product`;
+            if (searchValue === '') {
+                window.location.href = '/#product'; // Redirect to the anchor directly
+            } else {
+                const targetUrl = `/search/${encodeURIComponent(searchValue)}#product`;
+                window.location.href = targetUrl;
+            }
         }
-
-
     </script>
 
 </ul>
