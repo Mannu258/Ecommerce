@@ -4,24 +4,24 @@ from . models import *
 # Create your views here.
 
 def index(request,cat=None):
-    subcatquery = subcateogery.objects.all()[:16]
+    subcatquery = subcateogery.objects.all()[:8]
     query = Product.objects.all()
-    catquery = Cateogery.objects.all()[:16]
+    catquery = Cateogery.objects.all()
     return render(request,"index.html",{"query":query,"catquery":catquery,"subcatquery":subcatquery})
 
 def cateogery(request, cat=None):
-    catquery = Cateogery.objects.all()[:16]
+    catquery = Cateogery.objects.all()
     query = Product.objects.all()
     if cat:
         subcatquery = subcateogery.objects.filter(ccat__cat__contains=cat)
     else:
-        catquery = Cateogery.objects.all()[:16]
+        catquery = Cateogery.objects.all()
     return render(request, "index.html", {"query":query,"catquery": catquery,"subcatquery":subcatquery})
 
 def SUBcateogery(request, cat=None):
     query = Product.objects.filter(cat__scat__contains=cat)
-    catquery = Cateogery.objects.all()[:16]
-    subcatquery = subcateogery.objects.all()[:16]
+    catquery = Cateogery.objects.all()
+    subcatquery = subcateogery.objects.all()[:8]
     
     return render(request, "index.html", {"query":query,"catquery": catquery,"subcatquery":subcatquery})
 

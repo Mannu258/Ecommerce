@@ -1,53 +1,62 @@
 <!doctype html>
 {% load static %}
-<header>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #008080;">
-        <div class="container">
-            <a class="navbar-brand" href="/"><img class="logo" src="{% static 'assets/images/logo.png' %}"
-                    alt="Your Logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
-                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="btn btn-primary nav-link active" href="/">Home <span class="visually-hidden">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-danger nav-link" href="#product">Products</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Categories</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownId">
-                            {% for catquery in catquery %}
-                            <a class="dropdown-item text-dark" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a>
-                            {%endfor%}
-                    </li>
-            </div>
-            </li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Live Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" href="#">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active btn btn-danger me-3" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
+                    <a class="nav-link active btn btn-danger dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Categories</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                        {% for catquery in catquery %}
+                        <a class="dropdown-item text-dark" href="{% url 'cat' catquery.cat %}">{{catquery.cat}}</a>
+                        
+                        {%endfor%}
+                        
+                </li>
+                </li>
             </ul>
-            <form class="d-flex my-2 my-lg-0">
-                <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+            <div class="d-flex ms-auto">
+                <button class="form-control btn btn-danger me-3" type="submit">Search</button>
+                <button class="form-control btn btn-danger me-3" type="submit">Search</button>
+                <button class="form-control btn btn-danger me-3" type="submit">Search</button>
+
+            </div>
         </div>
-        </div>
-    </nav>
-    <style>
-        .colors {
-            background-color: #2d81b3;
-        }
-        .text-white {
-            text-decoration: none;
-            /* Ensure horizontal text flow */
-        }
-    </style>
-    <div class="colors">
-        <ul id="menu" class="d-md-inline-flex">
-            {% for catquery in subcatquery %}
-            <li class="px-4"><a class="text-white" href="{% url 'subcat' catquery.scat %}#product">{{catquery.scat}}</a></li>
-            {%endfor%}
-        </ul>
     </div>
-</header>
+</nav>
+</div>
+</div>
+
+<ul class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {% for catquery in subcatquery %}
+    <li class="px-3 mt-2"><a class="btn btn-danger" href="{% url 'subcat' catquery.scat %}#product">{{catquery.scat}}</a>
+    </li>
+    {%endfor%}
+    <form class="d-flex ms-auto mt-2 text-center">
+        <input class="form-control me-3" type="search" placeholder="Product Search" aria-label="Search">
+        <button class="form-control btn btn-danger" type="submit">Search</button>
+    </form>
+</ul>
+</ul>
