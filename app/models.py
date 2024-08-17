@@ -62,3 +62,6 @@ class UserDetails(models.Model):
     number = models.IntegerField(null =True)
     def __str__(self) -> str:
         return self.Username
+    
+    
+    

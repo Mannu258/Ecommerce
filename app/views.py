@@ -51,11 +51,46 @@ def contact(request):
 def detail(request):
     return render(request,"detail.html")
 
-def login(request):
-    return render(request,"login.html")
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 
+def custom_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('/')
+        else:
+            error_message = "Invalid credentials. Please try again."
+            return render(request, 'login.html', {'error_message': error_message})
+    else:
+        return render(request, 'login.html')
+
+def custom_logout(request):
+    from django.contrib.auth import logout
+    from django.shortcuts import redirect
+    logout(request)
+    return redirect('/')
+    
 def product(request):
     return render(request,"prodcut.html")
-def signup(request):
-    return render(request,"signup.html")
+
+# views.py
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
+def register(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        mobile = request.POST.get("mobile")
+        email = request.POST.get("Email")
+        password = request.POST.get("password")
+        user = User.objects.create_user(username=email, email=email, password=password)
+        user.first_name = name
+        user.save()
+        return redirect('login')
+    return render(request, 'registration.html')
 

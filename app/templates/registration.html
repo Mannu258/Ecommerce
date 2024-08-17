@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block body %}
+
+<!--  ************************* Page Title Starts Here ************************** -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+            <h2 class="text-start">Register</h2>
+        </div>
+    </div>
+</div>
+<!--####################### About US Starts Here ###################-->
+<form method="post" onsubmit="return verify()">
+    {% csrf_token %}
+    <div class="container-fluid big-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 col-md-10 py-5 mx-auto">
+                    <div class="login-card bg-white shadow-md p-5">
+                        <h4 class="text-center mb-5">Enter your detail to Signup</h4>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                                <label for="">Full Name</label>
+                                <span class="fw-bolder float-end">:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" name="name" placeholder="Enter Full Name" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                                <label for="">Mobile number</label>
+                                <span class="fw-bolder float-end">:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="number" id="number" name="mobile" placeholder="Enter Mobile Number" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                                <label for="">Email Address</label>
+                                <span class="fw-bolder float-end">:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="email" name="Email" placeholder="Enter Email Address" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                                <label for="">Password</label>
+                                <span class="fw-bolder float-end">:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="password" name="password" id="password" placeholder="Enter Password"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                                <label for="">Confirm Password</label>
+                                <span class="fw-bolder float-end">:</span>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="password" id="repassword" placeholder="Enter Password" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-row row">
+                            <div class="col-md-4 pt-2">
+                            </div>
+                            <div class="col-md-8">
+                                <button class="btn btn-success">Register</button>
+                                <script>
+                                    function verify() {
+                                        const password = document.getElementById('password').value;
+                                        const rePassword = document.getElementById('repassword').value;
+                                        const number = document.getElementById('number').value;
+                                        if (password !== rePassword) {
+                                            alert("Passwords do not match. Please re-enter.");
+                                            return false;
+                                        }
+                                        if (number.length !== 10) {
+                                            alert("Provide a correct Number.");
+                                            return false;
+                                        }
+                                        return true;
+                                    }
+                                </script>
+                                <a href="{% url 'login' %}"><span class="btn btn-danger float-end pt-2">Login</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{%endblock%}
