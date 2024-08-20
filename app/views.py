@@ -48,7 +48,9 @@ def cart(request):
 def contact(request):
     return render(request,"contact.html")
 
-def detail(request):
+def detail(request,id):
+    from django.http import HttpResponse
+    return HttpResponse(f"{id}")
     return render(request,"detail.html")
 
 from django.contrib.auth import authenticate, login

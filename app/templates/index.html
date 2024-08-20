@@ -43,7 +43,7 @@
             <div class="col-lg-3 col-md-4 mb-4">
                 <div class="bg-white p-2 shadow-md">
                     <div class="text-center">
-                        <a href="detail.html">
+                        <a href="{% url 'detail' query.id %}">
                             <img style="width: 500px; height: 300px;" class="w-100 d-block" src="/media/{{query.image}}">
 
                         </a>
@@ -65,7 +65,7 @@
                         </ul>
                         <div class="row pt-2">
                             <div class="col-md-6">
-                                <a href="detail.html">
+                                <a href="{% url 'detail' query.id %}">
                                     <button class="btn mb-2 fw-bold w-100 btn-danger">Buy Now</button>
                                 </a>
                             </div>

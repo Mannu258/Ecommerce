@@ -14,7 +14,7 @@ urlpatterns = [
     path('search/<str:param>',search,name='search'),
     path('product',product,name='product'),
     path('register',register,name='register'),
-    path('detail',detail,name='detail'),
+    path('detail/<int:id>',detail,name='detail'),
     path("Cateogery/<str:cat>",cateogery,name='cat'),
     path("subcaterogery/<str:cat>",SUBcateogery,name='subcat'),
     re_path(r'^media/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
