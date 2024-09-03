@@ -4,7 +4,7 @@ from . models import *
 # Create your views here.
 
 def index(request,cat=None):
-    subcatquery = subcateogery.objects.all()[:8]
+    subcatquery = subcateogery.objects.all()[:10]
     query = Product.objects.all()
     catquery = Cateogery.objects.all()
     return render(request,"index.html",{"query":query,"catquery":catquery,"subcatquery":subcatquery})
@@ -25,7 +25,7 @@ def search(request, param):
     else:
         query = Product.objects.all()
     catquery = Cateogery.objects.all()
-    subcatquery = subcateogery.objects.all()[:8]
+    subcatquery = subcateogery.objects.all()
 
     return render(request, "index.html", {"query": query, "catquery": catquery, "subcatquery": subcatquery})
         
