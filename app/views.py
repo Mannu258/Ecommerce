@@ -5,7 +5,7 @@ from . models import *
 
 def index(request,cat=None):
     subcatquery = subcateogery.objects.all()[:10]
-    query = Product.objects.all()
+    query = Product.objects.all()[:20]
     catquery = Cateogery.objects.all()
     return render(request,"index.html",{"query":query,"catquery":catquery,"subcatquery":subcatquery})
 
